@@ -4,7 +4,13 @@ const score = document.querySelector("scorecounter")
 // I might declare these in a function later
 // let firstCard = null;
 // let secondCard = null;
-// let clicks = 0;
+let clicks = 0;
+
+if (clicks === 1){
+  handleCardClick();
+} if (clicks === 2){
+  secondCardClick();
+}
 
 const COLORS = [
     "red",
@@ -46,9 +52,15 @@ const COLORS = [
     }
   }
 
+  //I'm trying to remove the event listener from the card that has been clicked
+
   function handleCardClick(event) {
     console.log(event)
-    console.log("you just clicked", event.target); 
+    console.log("you just clicked", event.target);
+    let activeCardOne = event.target;
+    activeCardOne.setAttribute("id", "active") 
+    // let otherCards = document.querySelector.not("active");
+    activeCardOne.removeEventListener("click", handleCardClick);
 }
 
 //so you need to write code that will allow you to pick no more than 
@@ -59,19 +71,19 @@ const COLORS = [
 function colorShow(event){
     if (event.target.classList.contains("orange")){
         console.log("orange!");
-        // document.getElementById("active").style.backgroundColor = "orange";
+        document.getElementById("active").style.backgroundColor = "orange";
       } else if (event.target.classList.contains("red")){
         console.log("red!");
-        // document.getElementById("active").style.backgroundColor = "red";
+        document.getElementById("active").style.backgroundColor = "red";
       } else if (event.target.classList.contains("purple")){
         console.log("purple!");
-        // document.getElementById("active").style.backgroundColor = "purple";
+        document.getElementById("active").style.backgroundColor = "purple";
       } else if (event.target.classList.contains("green")){
         console.log("green!")
-        // document.getElementById("active").style.backgroundColor = "green";
+        document.getElementById("active").style.backgroundColor = "green";
       } else if (event.target.classList.contains("blue")){
         console.log("blue!")
-        // document.getElementById("active").style.backgroundColor = "blue";
+        document.getElementById("active").style.backgroundColor = "blue";
       } else {
         console.log("this shouldn't happen...")
       }
